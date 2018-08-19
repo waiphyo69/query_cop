@@ -17,10 +17,12 @@ Or install it yourself as:
     $ gem install query_cop
 
 ## Usage
-In any of your rspec tests, you can add
+
+This gem currently works with only Rspec.
+In any of your rspec examples, you can add
 ```
    with_allowed_max_query_count(#{max_allowed_query_count}) do
-    # stuff you are trying to test
+    # actions you want to keep track of queries for
   end
 ```
 The spec will fail if the actual generated amount of queries exceed the number of queries that you allowed as max.
