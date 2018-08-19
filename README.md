@@ -27,7 +27,20 @@ In any of your rspec examples, you can add
 ```
 The spec will fail if the actual generated amount of queries exceed the number of queries that you allowed as max.
 
-It will also print out all the generated queries.
+It will also print out the failure message with the generated queries like this.
+
+```
+Failure/Error:
+             with_allowed_max_query_count(1) do
+               get "/cars.json"
+             end
+
+             Allowed maximum query count: 1
+             Actual generated query count: 2
+             Here is the list of generated queries:
+             SELECT  "cars".* FROM "cars" LIMIT $1 OFFSET $2
+             SELECT "license_plates".* FROM "license_plates" WHERE "license_plates"."car_id" = $1
+```
 
 ## Development
 
