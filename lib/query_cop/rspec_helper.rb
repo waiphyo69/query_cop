@@ -14,7 +14,7 @@ module QueryCop
         #{QueryTracker.queries.join("\n")}
         EOS
 
-        expect(QueryTracker.query_count).to be < max_count, failure_message
+        expect(QueryTracker.query_count).to be <= max_count, failure_message
       end
     end
   end
