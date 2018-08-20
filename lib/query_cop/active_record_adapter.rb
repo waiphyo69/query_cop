@@ -1,4 +1,5 @@
 require_relative "query_tracker.rb"
+
 module QueryCop
   module ActiveRecordAdapter
     def log(query, *)
