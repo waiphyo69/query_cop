@@ -1,5 +1,13 @@
 # QueryCop
 
+# Description
+
+A query tracker for ActiveRecord and Rspec that helps Rails developers be aware of how many database lookups their code is generating.
+
+By setting the maximum allowed query count in the test, it also helps the query count become explicit and have more robust performance-aware regression tests.
+
+The gem currently only works with sqlite3, psql and mysql.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -18,7 +26,7 @@ Or install it yourself as:
 
 ## Usage
 
-This gem currently works with only Rspec.
+
 In any of your rspec examples, you can add
 ```
    with_allowed_max_query_count(#{max_allowed_query_count}) do
@@ -41,6 +49,8 @@ Failure/Error:
              SELECT  "cars".* FROM "cars" LIMIT $1 OFFSET $2
              SELECT "license_plates".* FROM "license_plates" WHERE "license_plates"."car_id" = $1
 ```
+
+Within the `with_allowed_max_query_count` block, you can also directly access the current list of queries by calling `QueryCop::QueryTracker.queries`
 
 ## Development
 
